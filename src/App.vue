@@ -1,10 +1,26 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class='bg-red-800'>
+    <div id='nav' class='p-30px justify-between'>
+      <button class='px-10 py-5'><router-link to='/top100'>Top100</router-link></button>
+      <button><router-link to='/search'>Search Movies</router-link></button>
+      </div>
+
+    <router-view />
   </div>
-  <router-view/>
 </template>
+
+<script>
+export default {
+  methods: {
+    loadTopMovies() {
+      this.$store.dispatch('loadTopMovies');
+    },
+  },
+  created() {
+    this.loadTopMovies();
+  },
+};
+</script>
 
 <style>
 #app {
@@ -12,19 +28,19 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
+  color: #191d20;
+  background-color: #991B1B;
 }
 
 #nav a {
   font-weight: bold;
-  color: #2c3e50;
+  color: #D97706;
 }
 
 #nav a.router-link-exact-active {
-  color: #42b983;
+  color: #FCD34D;
+  font-weight:  700;
+  text-decoration:  overline;
+
 }
 </style>
